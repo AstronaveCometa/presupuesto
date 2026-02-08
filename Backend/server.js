@@ -1,13 +1,21 @@
 import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
+import userRoutes from "./src/routes/userRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
+import ingresosRoutes from "./src/routes/ingresosRoutes.js";
+import egresosRoutes from "./src/routes/egresosRoutes.js";
 
 dotenv.config();
 const app = express();
-const puerto = process.env.PORT || 3000;
-const host = process.env.HOST || 'localhost';
+const puerto = process.env.PORT;
+const host = process.env.HOST;
 app.use(cors());
 app.use(express.json());
 
+app.use(userRoutes);
+app.use(authRoutes);
+app.use(ingresosRoutes);
+app.use(egresosRoutes);
 
 app.listen(puerto, console.log(`Servidor corriendo en http://${host}:${puerto}`));
