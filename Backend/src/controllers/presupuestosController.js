@@ -1,8 +1,11 @@
 import { crearPresupuesto, getPresupuestoByUserId, updatePresupuesto } from '../models/presupuestosModel.js';
+import { updateUserPresupuesto } from '../models/usersModel.js';
 
 export const crearPresupuestoController = async (req, res) => {
     try {
         const presupuestoCreado = await crearPresupuesto(req.body);
+        const id_usuario = req.user;
+        await updateUserPresupuesto(id_usuario, presupuestoCreado.id);
         res.status(201).json(presupuestoCreado);
     } catch (error) {
         res.status(500).json({ error: error.message });

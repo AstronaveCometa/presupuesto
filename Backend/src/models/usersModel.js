@@ -29,3 +29,12 @@ export const getUserById = async (id_usuario) => {
     const resultado = await pool.query(consultaSQL);
     return resultado.rows[0];
 }
+
+export const updateUserPresupuesto = async (id_usuario, id_presupuesto) => {
+    const consultaSQL = {
+        text: "UPDATE usuarios SET id_presupuesto = $1 WHERE id_usuario = $2 RETURNING id_usuario, id_presupuesto",
+        values: [id_presupuesto, id_usuario]
+    };
+    const resultado = await pool.query(consultaSQL);
+    return resultado.rows[0];
+};
