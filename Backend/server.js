@@ -19,4 +19,4 @@ app.use(ingresosRoutes);
 app.use(egresosRoutes);
 app.use(presupuestosRoutes);
 
-app.listen(puerto, console.log(`Servidor corriendo en ${host}`));
+app.listen(console.log(`Servidor corriendo en ${host}`));
