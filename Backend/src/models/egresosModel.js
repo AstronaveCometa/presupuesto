@@ -1,4 +1,4 @@
-import { pool } from '../db/db_config.js';
+import { pool } from '../../db/db_config.js';
 
 export const crearEgreso = async (datos) => {
     const { nombre, cantidad, fecha, id_usuario } = datos;
