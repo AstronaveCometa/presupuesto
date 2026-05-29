@@ -4,6 +4,7 @@ export const crearEgresoController = async (req, res) => {
     try {
         const { nombre, cantidad, fecha } = req.body;
         const id_usuario = req.user;
+        console.log(nombre, cantidad, fecha, id_usuario);
         const nuevoEgreso = await crearEgreso({ nombre, cantidad, fecha, id_usuario });
         res.status(201).json(nuevoEgreso);
     } catch (error) {

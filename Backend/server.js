@@ -5,6 +5,7 @@ import userRoutes from "./src/routes/userRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 import ingresosRoutes from "./src/routes/ingresosRoutes.js";
 import egresosRoutes from "./src/routes/egresosRoutes.js";
+import presupuestosRoutes from "./src/routes/presupuestosRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -17,5 +18,6 @@ app.use(userRoutes);
 app.use(authRoutes);
 app.use(ingresosRoutes);
 app.use(egresosRoutes);
+app.use(presupuestosRoutes);
 
 app.listen(puerto, console.log(`Servidor corriendo en http://${host}:${puerto}`));
