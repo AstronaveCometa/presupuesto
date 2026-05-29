@@ -3,7 +3,7 @@ import { pool } from '../../db/db_config.js';
 export const crearPresupuesto = async (datos) => {
     const { nombre, cantidad } = datos;
     const consultaSQL = {
-        text: "INSERT INTO presupuesto (nombre, cantidad) VALUES ($1, $2) RETURNING nombre, cantidad",
+        text: "INSERT INTO presupuesto (nombre, cantidad) VALUES ($1, $2) RETURNING *",
         values: [nombre, cantidad]
     };
     const resultado = await pool.query(consultaSQL);
@@ -21,7 +21,7 @@ export const getPresupuestoByUserId = async (id_usuario) => {
 
 export const updatePresupuesto = async (id_presupuesto, nombre, cantidad) => {
     const consultaSQL = {
-        text: "UPDATE presupuesto SET nombre = $1, cantidad = $2 WHERE id_presupuesto = $3 RETURNING nombre, cantidad",
+        text: "UPDATE presupuesto SET nombre = $1, cantidad = $2 WHERE id_presupuesto = $3 RETURNING *",
         values: [nombre, cantidad, id_presupuesto]
     };
     const resultado = await pool.query(consultaSQL);
